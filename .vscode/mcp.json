@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "ai-pw-reports": {
+      "type": "stdio",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "${workspaceFolder}/McpServer/McpServer.csproj"
+      ]
+    }
+  }
+}

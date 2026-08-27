@@ -1,0 +1,12 @@
+Day 1
+1) czat konsolowy korzystający z własnego klucza api
+2) cel: agent zbierający informacje o usterce.
+	 Agent zbiera informacje o tym że, np. zepsuła się żarówka, i podajmuje decyzje o tym
+	 zeby uzyć funkfji (funcion calling) funkcja zapisuje na dysku informacje o zgloszeniu
+	a) samo func caling
+	b) uzycie MCP
+3) cel: agent , który posiada dostep do bazy ragowej z informacjami o naszej firmie
+4*) oddanie skili do agenta
+
+Day 2
+krótka prezentacja wykonanej pracy i podzielenie się opinią oraz doświadczeniami

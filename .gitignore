@@ -1,0 +1,23 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio / .NET user files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Test and coverage output
+TestResults/
+coverage/
+
+# Runtime data
+logs/
+reports/*.json
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
