@@ -27,6 +27,7 @@ internal sealed class OpenRouterClient : IDisposable
 
 	public async Task<string?> SendMessageAsync(string userInput)
 	{
+		errorLogger.Info("Nowe zapytanie użytkownika", userInput);
 		var messages = new List<object>
 		{
 			new { role = "user", content = userInput }
@@ -54,6 +55,7 @@ internal sealed class OpenRouterClient : IDisposable
 			var function = toolCall.GetProperty("function");
 			var functionName = function.GetProperty("name").GetString();
 			var argumentsJson = function.GetProperty("arguments").GetString() ?? "{}";
+			errorLogger.Info("Wybrano narzędzie MCP", $"Nazwa: {functionName}{Environment.NewLine}Argumenty: {argumentsJson}");
 
 			string toolResult;
 			if (functionName == "save_missing_items")
@@ -101,6 +103,7 @@ internal sealed class OpenRouterClient : IDisposable
 				tool_call_id = toolCall.GetProperty("id").GetString(),
 				content = toolResult
 			});
+			errorLogger.Info("Odebrano wynik narzędzia MCP", $"Nazwa: {functionName}{Environment.NewLine}Wynik: {toolResult}");
 		}
 
 		messages.Insert(1, new { role = "assistant", content = (string?)null, tool_calls = assistantToolCalls });
@@ -127,6 +130,7 @@ internal sealed class OpenRouterClient : IDisposable
 		using var requestContent = new StringContent(requestBody, Encoding.UTF8, "application/json");
 		using var response = await httpClient.PostAsync(OpenRouterUrl, requestContent);
 		var responseBody = await response.Content.ReadAsStringAsync();
+		errorLogger.Info("Odebrano odpowiedź OpenRouter", $"Status HTTP: {(int)response.StatusCode}");
 
 		if (!response.IsSuccessStatusCode)
 		{

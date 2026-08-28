@@ -16,6 +16,7 @@ coverage/
 # Runtime data
 logs/
 reports/*.json
+qdrant_storage/
 
 # Local environment and secrets
 .env
